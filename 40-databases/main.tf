@@ -10,7 +10,7 @@ resource "aws_instance" "mongodb" {
             Name = "${local.common_name_suffix}-mongodb" #roboshop-dev-mongodb
         }
     )
-
+}
 
     resource "terraform_data" "mongodb"{
         triggers_replace = [
@@ -28,6 +28,6 @@ resource "aws_instance" "mongodb" {
             ]
         }
     }
-}
+
 
 

@@ -12,30 +12,56 @@ resource "aws_instance" "mongodb" {
     )
 }
 
-    resource "terraform_data" "mongodb"{
-        triggers_replace = [
-            aws_instance.mongodb.id
-        ]
-        connection {
-            type = "ssh"
-            user = "ec2-user"
-            password = "DevOps321"
-            host = aws_instance.mongodb.private_ip
-        }
-        
-        #terraform copies this file to the mongodb server
-        provisioner "file" {
-             source = "bootstrap.sh"
-             destination = "/tmp/bootstrap.sh"
-        }
-
-        provisioner "remote-exec" {
-            inline =[
-                "chmod +x /tmp/bootstrap.sh",
-                "sudo sh /tmp/bootstrap.sh"
-            ]
-        }
+resource "terraform_data" "mongodb"{
+    triggers_replace = [
+        aws_instance.mongodb.id
+    ]
+    connection {
+        type = "ssh"
+        user = "ec2-user"
+        password = "DevOps321"
+        host = aws_instance.mongodb.private_ip
     }
+    
+    #terraform copies this file to the mongodb server
+    provisioner "file" {
+            source = "bootstrap.sh"
+            destination = "/tmp/bootstrap.sh"
+    }
+
+    provisioner "remote-exec" {
+        inline =[
+            "chmod +x /tmp/bootstrap.sh",
+            #"sudo sh /tmp/bootstrap.sh"
+            "sudo sh /tmp/bootstrap.sh mongodb"
+        ]
+    }
+}
+
+resource "terraform_data" "redis"{
+    triggers_replace = [
+        aws_instance.redis.id
+    ]
+    connection {
+        type = "ssh"
+        user = "ec2-user"
+        password = "DevOps321"
+        host = aws_instance.redis.private_ip
+    }
+    
+    #terraform copies this file to the redis server
+    provisioner "file" {
+            source = "bootstrap.sh"
+            destination = "/tmp/bootstrap.sh"
+    }
+
+    provisioner "remote-exec" {
+        inline =[
+            "chmod +x /tmp/bootstrap.sh",
+            "sudo sh /tmp/bootstrap.sh redis"
+        ]
+    }
+}
 
 
 

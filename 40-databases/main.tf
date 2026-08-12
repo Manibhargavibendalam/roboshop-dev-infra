@@ -128,7 +128,7 @@ resource "aws_instance" "mysql" {
     tags = merge(
         local.common_tags,
         {
-            Name = "${local.common_name_suffix}-rabbitmq" #roboshop-dev-rabbitmq
+            Name = "${local.common_name_suffix}-mysql" #roboshop-dev-rabbitmq
         }
     )
 }

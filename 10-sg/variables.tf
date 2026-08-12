@@ -1,4 +1,3 @@
-
 variable "project_name" {
     default = "roboshop"
 }
@@ -9,17 +8,18 @@ variable "environment" {
 
 variable "sg_names" {
     default = [
-        #databases
-        "mongodb","redis","mysql","rabbitmq",
-        #backend
-        "catalogue","user","cart","shipping","payment",
+        # databases
+        "mongodb", "redis", "mysql", "rabbitmq",
+        # backend
+        "catalogue", "user", "cart", "shipping", "payment",
         # frontend
         "frontend",
-        #bastion
+        # bastion
         "bastion",
-        #frontend load balancer
+        # frontend load balancer
         "frontend_alb",
-        #backend load balancer
-        "backend_alb"
-        ]
+        # Backend ALB
+        "backend_alb",
+        "open_vpn"
+    ]
 }

@@ -23,3 +23,11 @@ variable "sg_names" {
         "backend_alb"
         ]
 }
+
+variable "zone_id"{
+    default = "Z05991441T1HV11ZNW7DB"
+}
+
+variable "domain_name" {
+  default = "manibhargavi2225.online"
+}

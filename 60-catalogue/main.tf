@@ -98,4 +98,11 @@ resource "aws_ami_from_instance" "catalogue" {
   name               = "${local.common_name_suffix}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.catalogue] #we are this because stopping don't interrupt it..if we dont use this stopping will interrupt this
+
+  tags = merge (
+        local.common_tags,
+        {
+            Name = "${local.common_name_suffix}-catalogue" # roboshop-dev-mongodb
+        }
+    )
 }

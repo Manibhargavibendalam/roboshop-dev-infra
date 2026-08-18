@@ -145,7 +145,7 @@ resource "aws_launch_template" "catalogue" {
     tags = merge(
       local.common_tags,
       {
-        Name = "${local.common_suffix}-catalogue}"
+        Name = "${local.common_name_suffix}-catalogue"
       }
     )
   }
@@ -156,7 +156,7 @@ resource "aws_launch_template" "catalogue" {
     tags = merge(
       local.common_tags,
       {
-        Name = "${local.common_suffix}-catalogue}"
+        Name = "${local.common_name_suffix}-catalogue"
       }
     )
   }
@@ -165,7 +165,7 @@ resource "aws_launch_template" "catalogue" {
   tags = merge(
       local.common_tags,
       {
-        Name = "${local.common_suffix}-catalogue}"
+        Name = "${local.common_name_suffix}-catalogue"
       }
     )
 

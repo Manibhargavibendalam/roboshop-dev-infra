@@ -10,3 +10,10 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashi
 sudo yum -y install terraform
 
 # lvreduce -r -L 50G /dev/mapper/RootVG-homeVol  to take volume back
+
+#creating databases
+cd /home/ec2-user
+git clone https://github.com/Manibhargavibendalam/roboshop-dev-infra.git
+cd  roboshop-dev-infra/40-databases
+terraform init
+terraform apply -auto-approve
